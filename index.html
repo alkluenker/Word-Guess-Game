@@ -15,6 +15,8 @@
 
     <title>Hangman</title>
 
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <link rel="stylesheet" type="text/Javascript" href="assets/javascript/game.js">
@@ -23,38 +25,56 @@
 
 <body>
 
-    <p id="wrongguessesheader">
-        Wrong Guesses
-                     
-    </p>
-    
-    <p id="wrongguesses">
+    <div class="clearfix" id="container">
+
+        <div id="wrongguessesdiv">
         
+            <p id="wrongguessesheader">
+                Wrong Guesses
+                            
+            </p>
+            
+            <p id="wrongguesses">
 
-    </p>
+        </div>
+            
 
-    <p id="wordspaces">
+        </p>
 
-    </p>
-
-    <p id="wins">
-         
-    </p>
-
-    <p id="losses">
-
-    </p>
-
-    <p id="remainingletters">
+        <div id="worddiv">
         
-    </p>
+            <p id="wordspaces">
 
-    <p id="remainingguesses">
-       
-    </p>
+            </p>
 
-    <input type="button" value="reset" onclick="reset()" />
+            <p id="remainingletters">
+                
+            </p>
 
+            <p id="remainingguesses">
+            
+            </p>
+
+        </div>
+
+        <div id="updates">
+
+            <p id="wins">
+                
+            </p>
+
+            <p id="losses">
+
+            </p>
+
+        </div>
+
+
+
+        
+    </div>
+
+    <input id="resetbutton" type="button" value="reset" onclick="reset()" />
     
 
    

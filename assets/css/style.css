@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+#container {
+    background-color: aqua;
+    overflow: auto;
+}
+
+#wrongguessesdiv {
+    float: left;
+    width: 20%;
+   
+}
+
+#worddiv {
+    float: left;
+    width: 40%;
+}
+
+#updates {
+    float: right;
+    width: 20%;
+}
+
+p {
+    color: red;
+}
+
+#resetbutton {
+    float: left;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }

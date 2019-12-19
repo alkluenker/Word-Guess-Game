@@ -1,37 +1,44 @@
-//why remaining guesses not showing up, only 7
 
-//why text on page not updating
-
-
-
-//how to reset it
-    //reset?
-    //break?
-    //but always comes back illegal??????
-
-    //while loops????
 
 //how to prevent user from guessing same letter more than once
+
+//wins not updating until after reset
+
+
+//remaining guesses 6 after a loss, but 7 after a win
+
+//better way to get wins to update?? 
 
 
 
 
 //create var letters
 
-var userGuess = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
-var words = ["dog", "cat", "camel", "elephant"];
 
 
-var computerChoice = words[Math.floor(Math.random() * words.length)];
+var possibleGuesses = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+"use strict";
+
+var userGuess = [];
 
 
+
+var words = ["dog", "cat", "camel", "elephant", "giraffe", "zebra", "wildebeest", "tiger", "lion", "buffalo", "rhinoceros", "warthog", "gorilla", "porcupine", "jackal", "mongoose"];
+
+//choose random word
+var computerChoice = [];
+
+//words[Math.floor(Math.random() * words.length)];
+
+//blanks for where letters will go
 var spaces = [];
 
 
-
+//stores wrong guesses
 var wrongGuesses = [];
 
+//create progress variables
 var wins = 0;
 
 var losses = 0;
@@ -40,6 +47,9 @@ var remainingLetters = computerChoice.length;
 
 
 var remainingGuesses = 7;
+
+//create variables for text on page and link to html document
+
 
 var winsText = document.getElementById("wins");
 
@@ -51,6 +61,8 @@ var remainingLettersText = document.getElementById("remainingletters");
 
 var remainingGuessesText = document.getElementById("remainingguesses");
 
+
+//what text on page will say
 winsText.innerText = "Wins " + wins;
 
 lossesText.innerText = "Losses " + losses;
@@ -59,9 +71,15 @@ remainingGuessesText.innerText = "Remaining Guesses " + remainingGuesses;
 
 remainingLettersText.innerText = "Remaining Letters " + remainingLetters;
 
+
+//boolean for determining if user guesses are in chosen word
 var correctGuess = false;
 
+var previousGuesses = [];
 
+
+
+//what happens at beginning of game
 function begin() {
 
     
@@ -72,7 +90,7 @@ function begin() {
     console.log(computerChoice);
     
 
-
+//push underscores for chosen word
     for (var i = 0; i < computerChoice.length; i++) {
         spaces.push("__");
         
@@ -80,49 +98,60 @@ function begin() {
 
     }
 
-    //remainingLetters = computerChoice.length;
+    
 
-   
+    
 
     
 }
 
 
-
+//check if user guess in chosen word
 function check(userGuess) {
 
+    if (userGuess === possibleGuesses) {
+        alert("yay");
+    }
+
+    correctGuess = false;
+
     
-
-    //var correctGuess = false;
-
-    
-
+//loop to check for letter in word
     for (var j = 0; j < computerChoice.length; j++) {
         if (computerChoice[j] === userGuess) {
             correctGuess = true;
             //console.log(correctGuess);
-            //remainingLetters--
+            remainingLetters--
+            
         }
     }
 
+
+    //what to do if letter found in word
     if (correctGuess) {
-        remainingLetters--;
+        previousGuesses.push(userGuess);
+        console.log("previous guesses " + previousGuesses);
+        
         remainingLettersText.innerText = "Remaining Letters " + remainingLetters;
        
         console.log("remaining letter " + remainingLetters);
         for (var k = 0; k < computerChoice.length; k++) {
             if (computerChoice[k] === userGuess) {
                 spaces[k] = userGuess;
-                document.getElementById("wordspaces").innerHTML = spaces.join(" ");   
+                document.getElementById("wordspaces").innerHTML = spaces.join(" ");
+                   
             }
+
         }   
-    }
-
-
-     else {
+    } 
+    
+    else {
         remainingGuesses--
+        console.log("remaining guesses " + remainingGuesses);
         remainingGuessesText.innerText = "Remaining Guesses " + remainingGuesses;
         console.log("remaining guesses " + remainingGuesses);
+        previousGuesses.push(userGuess);
+        console.log("previous guesses " + previousGuesses);
 
         wrongGuesses.push(userGuess);
         document.getElementById("wrongguesses").innerHTML = wrongGuesses.join(" ");
@@ -130,8 +159,10 @@ function check(userGuess) {
 
     }
 
+    
+
     if (remainingGuesses === 0) {
-        alert("you lose");
+       
         losses++;
         console.log("losses " + losses);
         lossesText.innerText = "Losses " + losses;
@@ -145,6 +176,7 @@ function check(userGuess) {
         winsText.innerText = "Wins " + wins;
         wins++;
         console.log("wins " + wins);
+        alert("you win");
         
         
     }
@@ -157,71 +189,15 @@ function check(userGuess) {
     
     
 
-    
-
-}
-
-
-
-
-
-
-
-
-
-/*function complete() {
-    
-    document.getElementById("remainingguesses").innerHTML = remainingGuesses;
-    
-    document.getElementById("wordspaces").innerHTML = spaces.join(" ");
-    
-    document.getElementById("wrongguesses").innerHTML = wrongGuesses.join(" ");
-
-
-    
-    if (remainingGuesses === 0) {
-        losses++;
-        console.log("losses " + losses);
-        
-    }
-    
-    
-    if (remainingLetters === 0) {
-        wins++;
-        console.log("wins " + wins);
-    }
-
-    
-    
-    
-    
-    
-    
-}*/
-
-
-
-begin();
-
-
-    
-document.onkeydown = function(event) {
-    var userGuess = event.key.toLowerCase();
-    
-    while ((remainingLetters > 0) && (remainingGuesses > 0)) {
-
-        check(userGuess);
-        break;
-
-    }
-
-    
     
 
 }
 
 
 function reset() {
+
+    previousGuesses = [];
+    console.log("previous guesses " + previousGuesses);
     
     wrongGuesses = [];
     document.getElementById("wrongguesses").innerHTML = wrongGuesses.join(" ");
@@ -248,12 +224,66 @@ function reset() {
     console.log(remainingLetters);
     
     remainingGuesses = 7;
-    
+    if (correctGuess === false) {
+        remainingGuesses--;
+    }
     remainingGuessesText.innerText = "Remaining Guesses " + remainingGuesses;
 
     
     
 }
+
+
+begin();
+
+
+    
+//document.onkeydown = function(userGuess) {
+    //var userGuess = event.key.toLowerCase();
+
+    document.onkeydown = function(event) {
+        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+        if (possibleGuesses.indexOf(userGuess) === -1) return;
+
+        if (previousGuesses.indexOf(userGuess) !== -1) return;
+
+        
+
+       
+        
+    
+        while ((remainingLetters > 0) && (remainingGuesses > 0)) {
+
+        
+
+            check(userGuess);
+            break;
+
+    }
+
+
+    
+
+   
+
+    if (remainingLetters === 0) {
+        
+        reset();
+    }
+    
+    if (remainingGuesses === 0) {
+        alert("you lose");
+        reset();
+    }
+
+    
+    
+
+}
+
+
+reset();
 
 
     
