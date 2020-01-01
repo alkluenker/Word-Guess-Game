@@ -2,37 +2,33 @@
     box-sizing: border-box;
 }
 
+html {
+    background: url(https://previews.123rf.com/images/tigatelu/tigatelu1509/tigatelu150900236/45091612-collection-animal-safari.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 #container {
     background-color: aqua;
     overflow: auto;
 }
 
 #wrongguessesdiv {
-    float: left;
-    width: 20%;
+    background-color: cadetblue;
    
 }
 
 #worddiv {
-    float: left;
-    width: 40%;
+    background-color: coral;
 }
 
 #updates {
-    float: right;
-    width: 20%;
+    background-color: chartreuse;
 }
 
 p {
     color: red;
 }
 
-#resetbutton {
-    float: left;
-}
-
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
