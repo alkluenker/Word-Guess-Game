@@ -1,19 +1,5 @@
 
-
-//how to prevent user from guessing same letter more than once
-
-//wins not updating until after reset
-
-
-//remaining guesses 6 after a loss, but 7 after a win
-
-//better way to get wins to update?? 
-
-
-
-
-//create var letters
-
+$("#correct, #wrong").hide();
 
 
 var possibleGuesses = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -28,8 +14,6 @@ var words = ["dog", "cat", "camel", "elephant", "giraffe", "zebra", "wildebeest"
 
 //choose random word
 var computerChoice = [];
-
-//words[Math.floor(Math.random() * words.length)];
 
 //blanks for where letters will go
 var spaces = [];
@@ -111,6 +95,9 @@ function begin() {
     }*/
     remainingGuessesText.innerText = "Remaining Guesses " + remainingGuesses;
 
+    $("#background").show();
+    $("#correct, #wrong").hide();
+
     
     
 }
@@ -167,11 +154,15 @@ function check(userGuess) {
 function winAndLose() {
 
     if (remainingLetters === 0) {
-        alert("you win");
+        
+        $("#background").hide();
+        $("#correct").show();
     }
 
     if (remainingGuesses === 0) {
-        alert("you lose");
+        
+        $("#background").hide();
+        $("#wrong").show();
     }
 
 }
@@ -184,8 +175,8 @@ function update() {
     
         losses++;
         lossesText.innerText = "Losses " + losses;
-        setTimeout(winAndLose, 1000);
-        setTimeout(begin, 1000);
+        setTimeout(winAndLose, 1);
+        setTimeout(begin, 3000);
         
     }
 
@@ -196,8 +187,8 @@ function update() {
     if (remainingLetters === 0) {
         wins++;
         winsText.innerText = "Wins " + wins;
-        setTimeout(winAndLose, 1000);
-        setTimeout(begin, 1000);
+        setTimeout(winAndLose, 1);
+        setTimeout(begin, 3000);
         
         
     }
@@ -228,13 +219,11 @@ begin();
             break;
             
         }  
-
+        
         update();
-
         
         
     }
     
    
-    
     

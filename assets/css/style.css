@@ -2,20 +2,12 @@
     box-sizing: border-box;
 }
 
-html {
-    background: url(https://previews.123rf.com/images/tigatelu/tigatelu1509/tigatelu150900236/45091612-collection-animal-safari.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+.images {
+    max-width: 100%;
 }
 
-#container {
-    background-color: aqua;
-    overflow: auto;
-}
 
-#wrongguessesdiv {
+/*#wrongguessesdiv {
     background-color: cadetblue;
    
 }
@@ -30,5 +22,5 @@ html {
 
 p {
     color: red;
-}
+}*/
 

@@ -16,13 +16,28 @@
 
     <link rel="stylesheet" type="text/Javascript" href="assets/javascript/game.js">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 
 <body>
 
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Word Guess Game</h1>
+          <p class="lead">See if you can guess the kind of animal. 
+              <br>
+              Press a letter to see if it's right. 
+              <br>
+              If it is, it'll show up in the word, otherwise, it'll appear under wrong guesses. 
+              <br>
+              Once you guess the word correctly or you're out of guesses, the computer will automatically choose a new word.</p>
+        </div>
+      </div>
+
     <div class="container">
 
-        <div class="row justify-content-center mt-5 mx-auto">
+        <div class="row justify-content-center mt-5">
 
             <div class="col-sm-12 col-lg-3 text-center" id="wrongguessesdiv">
                 
@@ -82,6 +97,24 @@
         </div>
 
     </div> 
+
+    <div class="container" id="imagediv">
+
+        <div class="row justify justify-content-center">
+
+            <div class="col=md-12">
+
+                <img class="image-fluid images" id="background" src="assets/images/backgroundImage.jpg">
+
+                <img class="image-fluid images" id="correct" src="assets/images/correct.png">
+
+                <img class="image-fluid images" id="wrong" src="assets/images/wrong.jpg">
+
+            </div>
+
+        </div>
+
+    </div>
 
     <script src="assets/javascript/game.js">
     
